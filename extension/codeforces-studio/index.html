@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <meta name="description" content="Extension Hub — useful extensions designed to improve your everyday browsing experience." />
+    <meta name="theme-color" content="#fbfcfa" />
+    <link rel="icon" type="image/png" href="assets/extension-hub-mark.png" />
+    <title>Extension Hub — Useful extensions. Better browsing.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header" data-header>
+        <a class="brand" href="/" aria-label="Extension Hub home">
+          <span class="brand-mark" aria-hidden="true"><img src="assets/extension-hub-mark.png" alt="" /></span>
+          <span data-brand-name>Extension Hub</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="/" data-route="home">Extensions</a>
+          <a href="/support" data-route="support">Support <span class="nav-arrow">↗</span></a>
+          <a class="nav-about" href="https://surya-portfolio-nine-wheat.vercel.app/" target="_blank" rel="noreferrer">Surya Kumar <span class="nav-arrow">↗</span></a>
+        </nav>
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
+      </header>
+
+      <main id="app" aria-live="polite"></main>
+
+      <footer class="site-footer">
+        <div class="footer-top">
+          <a class="brand footer-brand" href="/">
+            <span class="brand-mark" aria-hidden="true"><img src="assets/extension-hub-mark.png" alt="" /></span>
+            <span data-brand-name>Extension Hub</span>
+          </a>
+          <p class="footer-note">Useful extensions.<br />Better browsing.</p>
+          <div class="footer-links">
+            <div><span class="eyebrow">Explore</span><a href="/">All extensions</a><a href="/support">Support my work</a></div>
+            <div><span class="eyebrow">Elsewhere</span><a data-social="github" href="#">GitHub <span>↗</span></a><a data-social="linkedin" href="#">LinkedIn <span>↗</span></a><a data-social="x" href="#">X / Twitter <span>↗</span></a></div>
+            <div><span class="eyebrow">Contact</span><a data-email href="#">Get in touch <span>↗</span></a></div>
+          </div>
+        </div>
+        <div class="footer-bottom"><span>© <span data-year></span> <span data-brand-name>Extension Hub</span></span><span>Made independently, with care.</span></div>
+      </footer>
+    </div>
+    <div class="lightbox" data-lightbox aria-hidden="true"><button class="lightbox-close" data-lightbox-close aria-label="Close image">×</button><img data-lightbox-image alt="" /></div>
+    <script src="app.js"></script>
+  </body>
+</html>
