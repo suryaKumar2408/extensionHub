@@ -14,6 +14,8 @@ The supplied Extension Hub logo and original UPI QR image are already stored in 
 
 Codeforces Studio currently has its Firefox Add-ons link configured. Its Chrome button remains hidden until a Chrome Web Store URL is added.
 
+ORBIT is listed as "Coming soon". Add its `chromeUrl` or `firefoxUrl` in `app.js` and change `status` to `Available now` when it is published.
+
 ## Run locally
 
 Because the app uses clean URL routes, serve the folder with any static server rather than opening `index.html` directly. For example:
