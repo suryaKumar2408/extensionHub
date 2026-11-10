@@ -110,7 +110,7 @@ Optional features such as the weather widget and website icons use external serv
     browsers: ['Chrome', 'Firefox'],
     status: 'Coming soon',
     version: '',
-    privacyUrl: '',
+    privacyUrl: '/extension/orbit/privacy',
     privacyNote: 'No account, no sign-up, no tracking, and no ads. All settings, workspaces, and saved tabs are stored locally in your browser. Optional features such as the weather widget and website icons use external services only when you enable or view them.',
     accent: 'lime',
   },
@@ -171,7 +171,7 @@ function detail(ext) {
   const featureList = ext.features?.map(item => `<div class="feature"><b>${esc(item.title)}</b><p>${esc(item.text)}</p></div>`).join('') || '';
   const gallery = ext.screenshots?.length ? ext.screenshots.map((src, i) => `<button class="screenshot" data-image="${esc(src)}" type="button"><img src="${esc(src)}" alt="${esc(ext.name)} screenshot ${i + 1}" /></button>`).join('') : `<div class="screenshot-empty"><div><b>Your screenshots will live here.</b>Add image paths to this extension’s <code>screenshots</code> array in <code>app.js</code>.</div></div>`;
   const install = [ext.chromeUrl ? `<a class="button button-primary" href="${esc(ext.chromeUrl)}" target="_blank" rel="noreferrer">Add to Chrome <span class="button-arrow">↗</span></a>` : '', ext.firefoxUrl ? `<a class="button" href="${esc(ext.firefoxUrl)}" target="_blank" rel="noreferrer">Add to Firefox <span class="button-arrow">↗</span></a>` : ''].filter(Boolean).join('') || '<p class="empty-install">Add store URLs in app.js to show installation buttons.</p>';
-  return `<div class="page-wrap"><section class="detail-hero"><a class="back-link" href="/">← All extensions</a><div class="detail-title">${extIcon(ext)}<div><h1>${esc(ext.name)}</h1><p>${esc(ext.shortDescription)}</p></div></div></section><section class="detail-body"><div class="detail-content"><span class="eyebrow">About the extension</span><div class="detail-copy">${richText(ext.description)}</div><h2>What it does</h2><div class="features">${featureList}</div>${ext.privacyNote ? `<h2>Privacy</h2><div class="detail-copy">${richText(ext.privacyNote)}</div>` : ''}<h2>Screenshots</h2><div class="gallery">${gallery}</div></div><aside class="detail-side"><div class="install-box"><h3>Get the extension</h3>${install}<div class="browser-row"><span>Browsers</span><strong>${esc(browserLabel(ext))}</strong></div>${ext.version ? `<div class="browser-row"><span>Version</span><strong>${esc(ext.version)}</strong></div>` : ''}${ext.privacyUrl ? `<a class="privacy-link" href="${esc(ext.privacyUrl)}">Read privacy policy ↗</a>` : ''}</div></aside></section></div>`;
+  return `<div class="page-wrap"><section class="detail-hero"><a class="back-link" href="/">← All extensions</a><div class="detail-title">${extIcon(ext)}<div><h1>${esc(ext.name)}</h1><p>${esc(ext.shortDescription)}</p></div></div></section><section class="detail-body"><div class="detail-content"><span class="eyebrow">About the extension</span><div class="detail-copy">${richText(ext.description)}</div><h2>What it does</h2><div class="features">${featureList}</div>${ext.privacyNote ? `<h2>Privacy</h2><div class="detail-copy">${richText(ext.privacyNote)}</div>` : ''}<h2>Screenshots</h2><div class="gallery">${gallery}</div>${ext.privacyUrl ? `<p class="detail-privacy"><a href="${esc(ext.privacyUrl)}">Privacy policy <span>↗</span></a></p>` : ''}</div><aside class="detail-side"><div class="install-box"><h3>Get the extension</h3>${install}<div class="browser-row"><span>Browsers</span><strong>${esc(browserLabel(ext))}</strong></div>${ext.version ? `<div class="browser-row"><span>Version</span><strong>${esc(ext.version)}</strong></div>` : ''}${ext.privacyUrl ? `<a class="privacy-link" href="${esc(ext.privacyUrl)}">Read privacy policy ↗</a>` : ''}</div></aside></section></div>`;
 }
 
 function support() {
@@ -233,13 +233,41 @@ function setupMotion() {
   targets.forEach(element => observer.observe(element));
 }
 
+function privacyOrbit() {
+  const li = items => `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+  return `<div class="page-wrap"><section class="detail-hero"><a class="back-link" href="/extension/orbit">← ORBIT</a><div class="detail-title">${extIcon(EXTENSIONS.find(item => item.slug === 'orbit'))}<div><h1>Privacy Policy</h1><p>ORBIT – Your Personal Workspace · Last updated November 11, 2026</p></div></div></section>
+  <section class="detail-body" style="grid-template-columns:1fr;max-width:780px"><div class="detail-content detail-copy privacy-copy">
+    <p>ORBIT is a new tab extension for Chrome by an independent developer. It has no account, no sign-up, no analytics, no ads, and no server operated by the developer. This policy explains what ORBIT stores on your device and the few cases where your browser contacts a third-party service.</p>
+    <h2>Summary</h2>
+    ${li(['The developer does not collect, receive, or have access to any of your data.', 'Your settings, workspaces, links, to-dos, wallpapers and saved tabs are stored only in your browser on your device.', 'Nothing is sold, shared for advertising, or used for profiling or credit decisions.', 'A few optional or visual features make requests to third-party services (listed below).'])}
+    <h2>Data stored on your device</h2>
+    <p>ORBIT saves the following locally, using the browser’s extension storage, local storage and IndexedDB. It never leaves your device unless you export it yourself.</p>
+    ${li(['<strong>Settings and layout:</strong> theme, accent color, widget positions, search engine, wallpaper choices and workspaces.', '<strong>Links and widgets:</strong> the link collections you create, to-do items and focus timer state.', '<strong>Saved tab collections:</strong> when you choose to save your open tabs, ORBIT stores each tab’s address (URL), title and pinned state so it can reopen them in order.', '<strong>Session recovery snapshot:</strong> ORBIT keeps a rolling local copy of your currently open tabs (URL, title, pinned state) so your previous session can be restored after a crash or shutdown.', '<strong>Your own wallpapers:</strong> images or videos you upload are kept in local browser storage.'])}
+    <p>You can rename or delete collections at any time, export or import a full JSON backup, and remove everything by uninstalling the extension.</p>
+    <h2>Why ORBIT needs its permissions</h2>
+    ${li(['<strong>tabs</strong> — to read the URL and title of your open tabs when you save them or when the session snapshot is updated, and to open tabs when you restore a collection.', '<strong>storage</strong> — to save your settings, workspaces and collections locally.', '<strong>unlimitedStorage</strong> — so large uploaded wallpapers and many saved collections are not lost to storage limits.'])}
+    <p>ORBIT does not request access to the content of web pages, and it does not read your browsing history beyond the tabs that are currently open.</p>
+    <h2>Third-party services contacted by your browser</h2>
+    <p>These requests go directly from your browser to the service. The developer does not see them, and ORBIT does not add any identifier to them.</p>
+    ${li(['<strong>Google Fonts</strong> (fonts.googleapis.com) — loads the interface fonts when a new tab opens. Google receives your IP address and browser details, as with any web font request.', '<strong>Website icons (Google favicon service)</strong> — to show a site’s icon, ORBIT requests it from google.com using only the domain name (for example, github.com) of links in your collections and saved tabs. Links with a custom icon do not make this request.', '<strong>Weather widget (Open-Meteo)</strong> — only if you add the widget and click its button. Your browser asks for permission to share your location, then sends the coordinates to api.open-meteo.com to get the current temperature. ORBIT does not store your location.', '<strong>Search</strong> — when you search from ORBIT, your query is sent to the search engine you selected (Google, Bing, DuckDuckGo or Brave) and handled under that engine’s privacy policy.', '<strong>Links you open</strong> — the Support, Connect and Bug report buttons open external pages (for example, an email draft addressed to the developer) in a new tab. You choose whether to send anything.'])}
+    <h2>What ORBIT does not do</h2>
+    ${li(['No analytics, telemetry, crash reporting or tracking of any kind.', 'No advertising, and no selling or transfer of user data to third parties.', 'No use of your data for any purpose other than the features described above.', 'No remote code: all code runs from within the extension package.'])}
+    <h2>Children</h2>
+    <p>ORBIT does not knowingly collect any personal information from anyone, including children.</p>
+    <h2>Changes to this policy</h2>
+    <p>If ORBIT’s behavior changes in a way that affects your data, this policy will be updated and the date above will change.</p>
+    <h2>Contact</h2>
+    <p>Questions about privacy? Email <a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>.</p>
+  </div></section></div>`;
+}
+
 function render() {
   const path = window.location.pathname.replace(/\/$/, '') || '/';
   const match = path.match(/^\/extension\/(.+)$/);
   const ext = match && EXTENSIONS.find(item => item.slug === decodeURIComponent(match[1]));
   const app = document.querySelector('#app');
   app.classList.remove('page-enter');
-  app.innerHTML = path === '/support' ? support() : ext ? detail(ext) : path === '/' ? home() : `<div class="page-wrap not-found"><h1>Page not found.</h1><p>That page has moved. <a class="back-link" href="/">Return home →</a></p></div>`;
+  app.innerHTML = path === '/support' ? support() : path === '/extension/orbit/privacy' ? privacyOrbit() : ext ? detail(ext) : path === '/' ? home() : `<div class="page-wrap not-found"><h1>Page not found.</h1><p>That page has moved. <a class="back-link" href="/">Return home →</a></p></div>`;
   window.scrollTo(0, 0);
   bindPage();
   setupMotion();
