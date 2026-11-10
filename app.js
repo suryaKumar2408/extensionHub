@@ -57,6 +57,63 @@ Your Codeforces account remains yours. All submissions are subject to Codeforces
     privacyNote: 'Settings and code drafts are stored locally in your browser. No personal data is collected or sent to third parties. Run and Submit functionality uses your logged-in Codeforces session and the website’s own endpoints.',
     accent: 'lime',
   },
+  {
+    id: 'orbit',
+    name: 'ORBIT – Your Personal Workspace',
+    slug: 'orbit',
+    shortDescription: 'A calm, customizable new tab: widgets, shortcuts, wallpapers, workspaces, and one-click save & restore for your open tabs.',
+    description: `ORBIT turns your new tab page into a calm, personal workspace. Everything is yours to arrange, and everything stays on your device.
+
+**SAVE & RESTORE YOUR TABS**
+• Save all your open tabs as a named collection before you leave
+• Reopen the whole collection in its original order with one click
+• Rename or delete collections, and never end up with accidental duplicates
+• Your previous browser session is recovered automatically, so a crash or shutdown never costs you your tabs
+
+**BUILD YOUR OWN LAYOUT**
+• Drag and resize every card and widget, or hide what you don't need
+• Organize links into unlimited collections with list or grid view
+• Clock, date and greeting, web search, daily thought, weather, focus timer and to-do list
+• Separate workspaces for work, study, or personal life. Create, duplicate and switch instantly
+
+**MAKE IT FEEL RIGHT**
+• Dark, Light and AMOLED themes that restyle the entire interface
+• Choose an accent color, card transparency, blur, and corner radius
+• Built-in wallpaper gallery, plus your own images or videos
+• Optional automatic wallpaper rotation
+
+**YOURS, AND PRIVATE**
+• No account, no sign-up, no tracking, no ads
+• All settings, workspaces and saved tabs are stored locally in your browser
+• Export and import a full JSON backup whenever you like
+
+**QUICK START**
+Open a new tab to begin. Click the ORBIT toolbar icon (or press Alt+Shift+S) any time to save your open tabs.
+
+Optional features such as the weather widget and website icons use external services only when you enable or view them. See the privacy policy for details.`,
+    icon: 'assets/orbit/icon.png',
+    screenshots: [
+      'assets/orbit/home-workspace.png',
+      'assets/orbit/customize-theme.png',
+      'assets/orbit/workspaces.png',
+      'assets/orbit/widget-library.png',
+    ],
+    features: [
+      { title: 'Save & Restore Tabs', text: 'Save all open tabs as a named collection and reopen them in their original order with one click. Your previous session is recovered automatically after a crash or shutdown.' },
+      { title: 'Your Own Layout', text: 'Drag and resize every card and widget, organize links into unlimited collections, and add a clock, search bar, daily thought, weather, focus timer, and to-do list.' },
+      { title: 'Workspaces', text: 'Keep separate workspaces for work, study, or personal life. Create, duplicate, and switch between them instantly.' },
+      { title: 'Themes & Wallpapers', text: 'Choose Dark, Light, or AMOLED, set your accent color, transparency, blur, and corner radius, and use the built-in wallpaper gallery or your own images and videos.' },
+      { title: 'Private by Design', text: 'No account, no tracking, no ads. Everything is stored locally, with full JSON export and import for backups.' },
+    ],
+    firefoxUrl: '',
+    chromeUrl: '',
+    browsers: ['Chrome', 'Firefox'],
+    status: 'Coming soon',
+    version: '',
+    privacyUrl: '',
+    privacyNote: 'No account, no sign-up, no tracking, and no ads. All settings, workspaces, and saved tabs are stored locally in your browser. Optional features such as the weather widget and website icons use external services only when you enable or view them.',
+    accent: 'lime',
+  },
 ];
 
 const iconMarkup = (accent = 'lime') => {
